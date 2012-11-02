@@ -4,11 +4,11 @@ This is an example project showing how you can use Node.js to test javascript th
 
 == Why
 
-Doing TDD with capybara-webkit is really painful. When you write a failing test, the error feedback probably looks something like `undefined is not a function`. That's not very helpful.
+Doing TDD with capybara-webkit is really painful. When you write a failing test, the error feedback probably looks something like <tt>undefined is not a function</tt>. That's not very helpful.
 
-Selenium gives somewhat better error messages. You might get something as helpful as `foo.bar is not a function`.
+Selenium gives somewhat better error messages. You might get something as helpful as <tt>foo.bar is not a function</tt>.
 
-Poltergeist is a bit more helpful: `'undefined' is not a function (evaluating 'foo.bar()')`
+Poltergeist is a bit more helpful: <tt>'undefined' is not a function (evaluating 'foo.bar()')</tt>
 
 With Node.js:
 
@@ -27,11 +27,11 @@ With Node.js:
 
 I should note that this is just a proof of concept.
 
-First we add `spec/javascripts` to the asset paths. This project modifies `config/environments/test.rb` so the files are only available in the test environment.
+First we add <tt>spec/javascripts</tt> to the asset paths. This project modifies <tt>config/environments/test.rb</tt> so the files are only available in the test environment.
 
-Now we can use Rails' asset pipeline to compile our spec files. This project includes a simple script, `script/jspec`, which finds all the spec files and runs each one individually with mocha.
+Now we can use Rails' asset pipeline to compile our spec files. This project includes a simple script, <tt>script/jspec</tt>, which finds all the spec files and runs each one individually with mocha.
 
-Node.js uses a module system, so you need to make any code you want to test globally available. Naively, I created `spec/javascripts/spec_helper` that just aliases Node's `global` object as `window`. You can also load any support libraries as well.
+Node.js uses a module system, so you need to make any code you want to test globally available. Naively, I created <tt>spec/javascripts/spec_helper</tt> that just aliases Node's <tt>global</tt> object as <tt>window</tt>. You can also load any support libraries as well.
 
 == Future Work
 
