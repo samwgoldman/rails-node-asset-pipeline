@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+
+spec_root = File.join(Rails.root, "spec", "javascripts")
+tmp_dir = File.join(Rails.root, "tmp")
+assets = Rails.application.assets
+
+assets.each_entry(spec_root).find_all do |pathname|
+  next unless pathname.basename.to_s =~ /_spec\./
+  Tempfile.open("jspec", tmp_dir) do |file|
+    file.write assets[pathname].source
+    file.rewind
+    puts `mocha #{file.path}`
+  end
+end
